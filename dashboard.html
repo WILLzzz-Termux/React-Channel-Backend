@@ -1,0 +1,8 @@
+<h2>Dashboard</h2>
+<div id="st">Loading...</div>
+<a href="logs.html">📊 Log</a>
+<script src="config.js"></script>
+<script>
+fetch(API+"/wa-status").then(r=>r.json())
+.then(d=>st.innerText=d.connected?"CONNECTED":"DISCONNECTED")
+</script>

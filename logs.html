@@ -1,0 +1,15 @@
+<h2>Activity Log (Admin)</h2>
+<pre id="box"></pre>
+<button onclick="dl()">⬇️ Download</button>
+<script src="config.js"></script>
+<script>
+fetch(API+"/logs",{headers:{
+  "x-role":localStorage.role,
+  "x-user":localStorage.user
+}}).then(r=>r.json()).then(d=>box.textContent=d.logs)
+function dl(){
+  const a=document.createElement("a")
+  a.href=URL.createObjectURL(new Blob([box.textContent]))
+  a.download="activity.log"; a.click()
+}
+</script>

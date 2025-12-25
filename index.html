@@ -1,0 +1,15 @@
+<h2>Login</h2>
+<input id="u" placeholder="Username">
+<input id="p" type="password">
+<button onclick="login()">Login</button>
+<script src="config.js"></script>
+<script>
+async function login(){
+  const r=await fetch(API+"/login",{method:"POST",headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({username:u.value,password:p.value})})
+  if(!r.ok) return alert("Login gagal")
+  const d=await r.json()
+  localStorage.user=u.value; localStorage.role=d.role
+  location="dashboard.html"
+}
+</script>
